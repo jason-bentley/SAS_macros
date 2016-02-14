@@ -9,7 +9,7 @@ proc logistic data = &data_in;
 	format &outcome ;
 run;
 
-/* May 20 added in a proc genmod just to capture LRT for the above logistic regression */
+/* use proc genmod just to capture LRT for the above logistic regression */
 proc genmod data = &data_in DESCENDING;
 	class &refcats / param=reference;
 	model &outcome = &catgvar &cntsvar / dist=bin type3;
